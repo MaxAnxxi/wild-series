@@ -3,24 +3,15 @@ const express = require("express");
 const router = express.Router();
 
 /* ************************************************************************* */
-// Import And Use Routers Here
+// Define Your API Routes Here
 /* ************************************************************************* */
 
-router.get('/', (req,res) => {
-  res.send('Welcome to Wild Series')
-});
+// Import item-related actions
+const { browse } = require("../../../controllers/programActions");
 
-
-const itemsRouter = require("./items/router");
-
-router.use("/items", itemsRouter);
-
-const programRouter = require("./programs/router")
-
-router.use("/programs", programRouter)
+// Route to get a list of items
+router.get("/", browse);
 
 /* ************************************************************************* */
 
 module.exports = router;
-
-
